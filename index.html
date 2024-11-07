@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      class="flex flex-col justify-around items-center h-screen w-full overflow-scroll"
+    >
+      <h4 class="font-montserrat text-3xl text-center">
+        Car Classification Application
+      </h4>
+
+      <div class="flex -space-x-2 m-4">
+        <a href="#" class="">
+          <img
+            class="inline-block h-20 w-20 rounded-full object-cover ring-2 ring-white"
+            src="https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/rolls_royce_phantom_top_10.jpg?itok=XjL9f1tx"
+            alt="Guy"
+          />
+        </a>
+        <a href="#" class="">
+          <img
+            class="inline-block h-20 w-20 rounded-full object-cover ring-2 ring-white"
+            src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960"
+            alt="Max"
+          />
+        </a>
+        <a href="#" class="">
+          <img
+            class="inline-block h-20 w-20 rounded-full object-cover ring-2 ring-white"
+            src="https://imageio.forbes.com/specials-images/imageserve/6064c6802c761b99a89d1f21/0x0.jpg?format=jpg&crop=2375,1336,x0,y120,safe&height=600&width=1200&fit=bounds"
+            alt="Charles"
+          />
+        </a>
+        <a href="#" class="">
+          <img
+            class="inline-block h-20 w-20 rounded-full object-cover ring-2 ring-white"
+            src="https://www.kbb.com/wp-content/uploads/2022/08/2022-mercedes-amg-eqs-front-left-3qtr.jpg"
+            alt="Jade"
+          />
+        </a>
+      </div>
+
+      <h3 class="font-montserrat text-xl text-center w-1/2 m-4" dir="rtl">
+        في البداية قمنا بعمل معالجة بالشكل اللازم على البيانات
+        <span dir="rtl">ومن أجل القيم الفارغة في العمود</span>
+        <span dir="ltr">type</span>
+        <span dir="rtl"
+          >والذي يعتبر هو العمود الهدف في مسألتنا فقد قمنا بإزالة الأسطر التي
+          تحتوي على قيم فارغة في هذا العمود. من أجل باقي الأعمدة مثل (</span
+        >
+        <span dir="ltr"
+          >year, manufacturer, fuel, odometer, title_status, transmission</span
+        >
+        <span dir="rtl"
+          >) فقد تمت معالجتهم على قسمين: قسم خاص بالسمات الرقمية ك (</span
+        >
+        <span dir="ltr">year, odometer</span>
+        <span dir="rtl"
+          >) وتمت تعبئة القيم الفارغة بالمتوسط الحسابي لهذه المتحولات بباقي
+          الجدول. قسم خاص بالسمات المحددة Categorical ك (</span
+        >
+        <span dir="ltr">manufacturer, fuel, title_status, transmission</span>
+        <span dir="rtl"
+          >) وقد تمت تعبئة القيم الفارغة بالقيمة الأكثر تكرار في كل عمود. وقد تم
+          تحويل السمات المحددة إلى سمات رقمية من خلال استخدام</span
+        >
+        <span dir="ltr">OneHotEncoder</span>
+        <span dir="rtl"
+          >. ومن أجل السمات الرقمية فقد تم حصرها بمجال معين كي لا تعطي القيم
+          الكبيرة جدا أهمية عالية أثناء التدريب وذلك من خلال استخدام</span
+        >
+        <span dir="ltr">StandardScaler</span>
+        <span dir="rtl">.</span>
+      </h3>
+
+      <div
+        class="inline-flex items-center bg-white leading-none ${props.textColor} rounded-full p-2 shadow text-teal text-sm m-4"
+      >
+        <span
+          class="inline-flex bg-gray-700 text-white rounded-full h-6 px-3 justify-center items-center"
+        >
+          Results
+        </span>
+        <span class="inline-flex px-2 text-gray-700"> Web Data Mining. </span>
+      </div>
+      <table class="table p-4 bg-white rounded-lg shadow">
+        <thead>
+          <tr>
+            <th
+              class="border p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900"
+            >
+              Algorithm
+            </th>
+            <th
+              class="border p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900"
+            >
+              accuracy
+            </th>
+            <th
+              class="border p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900"
+            >
+              precision
+            </th>
+            <th
+              class="border p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900"
+            >
+              recall
+            </th>
+            <th
+              class="border p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900"
+            >
+              F1
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-gray-700">
+            <td class="border p-4 dark:border-dark-5">logistic regression</td>
+            <td class="border p-4 dark:border-dark-5">0.42
+            </td>
+            <td class="border p-4 dark:border-dark-5">0.4</td>
+            <td class="border p-4 dark:border-dark-5">0.42</td>
+            <td class="border p-4 dark:border-dark-5">0.38</td>
+          </tr>
+          <tr class="text-gray-700">
+            <td class="border p-4 dark:border-dark-5">decision tree</td>
+            <td class="border p-4 dark:border-dark-5">0.73</td>
+            <td class="border p-4 dark:border-dark-5">0.73</td>
+            <td class="border p-4 dark:border-dark-5">0.73</td>
+            <td class="border p-4 dark:border-dark-5">0.73</td>
+          </tr>
+          <tr class="text-gray-700">
+            <td class="border p-4 dark:border-dark-5">Naive Bayes</td>
+            <td class="border p-4 dark:border-dark-5">0.07</td>
+            <td class="border p-4 dark:border-dark-5">0.41</td>
+            <td class="border p-4 dark:border-dark-5">0.07</td>
+            <td class="border p-4 dark:border-dark-5">0.08</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="font-montserrat text-xl text-center w-1/2 m-4" dir="rtl">
+        لاحظنا أثناء العمل عدم وجود توزع متناسب بين فئات السيارات وهذا ما يفسر
+        النتائج الغير جيدة في جميع النماذج وعلى الرغم من ذلك فإن المصنف المبني
+        على شجرة القرار (<span dir="ltr">Decision Tree</span>) أعطى أفضل نتيجة
+        بين الجميع وذلك لأنه مبني على قواعد تدرس العلاقة الغير خطية بين السمات
+        على عكس نموذج <span dir="ltr">Naïve Bayes</span> الذي يفترض عدم وجود
+        علاقة بين السمات.
+      </h3>
+    </div>
+  </body>
+</html>
